@@ -1,7 +1,8 @@
 export function Home() {
     return (
         <>
-        <h1>Tela de boas-vindas com visão geral da locadora</h1>
+        <h1>Sistema de Gestão de Frota DriveRent</h1>
+        <p>Tela de boas-vindas com visão geral da locadora</p>
         </>
     )
 }

@@ -1,0 +1,9 @@
+.header-component {
+    background-color: #003f7a;
+    padding: 10px 60px;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
