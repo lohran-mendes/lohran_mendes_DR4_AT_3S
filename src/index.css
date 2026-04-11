@@ -1,5 +1,5 @@
 html {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 16px;
 }
 
@@ -9,15 +9,11 @@ html {
   box-sizing: border-box;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
 body {
   background-color: rgba(53, 53, 53, 0.904);
 }
 
-.root-container {
-  margin: 20px 0px 60px 60px;
+a {
+  text-decoration: none;
+  color: inherit;
 }
