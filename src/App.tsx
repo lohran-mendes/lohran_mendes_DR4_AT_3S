@@ -1,20 +1,17 @@
-import "./App.css";
-
 import { BrowserRouter, Route, Routes } from "react-router";
-import { Header } from "./components";
 import { Home, FleetDashboard, VehicleRegister } from "./pages";
+import { RootLayout } from "./layouts/root/RootLayout";
 
 export function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <div className="app-container">
-        <Routes>
+      <Routes>
+        <Route element={<RootLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/cadastrar" element={<VehicleRegister />} />
           <Route path="/frota" element={<FleetDashboard />} />
-        </Routes>
-      </div>
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }
