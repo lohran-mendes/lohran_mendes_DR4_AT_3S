@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import { Home, FleetDashboard, VehicleRegister, VehicleDetails } from "./pages";
+import { Home, FleetDashboard, VehicleRegister, VehicleDetails, NotFound } from "./pages";
 import { RootLayout } from "./layouts/root/RootLayout";
 import type { Vehicle } from "./types/vehicle.types";
 import { useState } from "react";
@@ -27,6 +27,7 @@ export function App() {
             path="/frota"
             element={<FleetDashboard vehicles={vehicles} />}
           />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
