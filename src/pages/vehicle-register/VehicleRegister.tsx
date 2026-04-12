@@ -1,6 +1,7 @@
 import type { Vehicle } from "../../types/vehicle.types";
 import type { Dispatch, SetStateAction, SubmitEvent } from "react";
 import { Bounce, ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router";
 import "./styles.css";
 
 type VehicleRegisterProps = {
@@ -12,6 +13,8 @@ export function VehicleRegister({
   vehicles,
   setVehicles,
 }: VehicleRegisterProps) {
+  const navigate = useNavigate();
+
   const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -39,8 +42,11 @@ export function VehicleRegister({
     }
 
     setVehicles((prevVehicles) => [...prevVehicles, newVehicle]);
-    toast.success("Veículo cadastrado com sucesso!");
+    toast.success("Veículo cadastrado com sucesso! Redirecionando...");
     event.currentTarget.reset();
+    setTimeout(() => {
+      navigate("/frota");
+    }, 3000);
   };
 
   return (
