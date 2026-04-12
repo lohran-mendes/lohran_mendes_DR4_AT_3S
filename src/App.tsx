@@ -25,7 +25,7 @@ export function App() {
           <Route path="/veiculo/:id" element={<VehicleDetails vehicle={vehicles} />} />
           <Route
             path="/frota"
-            element={<FleetDashboard vehicles={vehicles} />}
+            element={<FleetDashboard vehicles={vehicles} setVehicles={setVehicles} />}
           />
           <Route path="*" element={<NotFound />} />
         </Route>

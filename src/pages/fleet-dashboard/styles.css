@@ -71,7 +71,8 @@
   margin-top: 2px;
 }
 
-.fleet-dashboard-page .details-link {
+.fleet-dashboard-page .details-link, 
+.fleet-dashboard-page button {
   text-align: center;
   margin-top: 10px;
   padding: 12px;
@@ -88,4 +89,16 @@
 
 .fleet-dashboard-page .details-link:hover {
   background-color: #002f5a;
+}
+
+.fleet-dashboard-page .remove-button {
+  margin-top: 0px;
+  border: 1px solid #c0392b;
+  background-color: transparent;
+  color: #c0392b;
+}
+
+.fleet-dashboard-page .remove-button:hover {
+  background-color: #c0392b;
+  color: white;
 }
