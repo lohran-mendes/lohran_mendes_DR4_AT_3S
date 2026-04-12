@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import { Home, FleetDashboard, VehicleRegister, VehicleDetails, NotFound } from "./pages";
 import { RootLayout } from "./layouts/root/RootLayout";
+import { ProtectedRoute } from "./auth";
 import type { Vehicle } from "./types/vehicle.types";
 import { useEffect, useState } from "react";
 
@@ -17,6 +18,8 @@ export function App() {
     return storedVehicles ? JSON.parse(storedVehicles) : mockVehicles;
   });
 
+  const [isLogged, setIsLogged] = useState(false);
+
   useEffect(() => {
     localStorage.setItem("vehicles", JSON.stringify(vehicles));
   }, [vehicles]);
@@ -24,16 +27,31 @@ export function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<RootLayout />}>
+        <Route element={<RootLayout isLogged={isLogged} setIsLogged={setIsLogged} />}>
           <Route path="/" element={<Home />} />
           <Route
             path="/cadastrar"
-            element={<VehicleRegister vehicles={vehicles} setVehicles={setVehicles} />}
+            element={
+              <ProtectedRoute isLogged={isLogged}>
+                <VehicleRegister vehicles={vehicles} setVehicles={setVehicles} />
+              </ProtectedRoute>
+            }
           />
-          <Route path="/veiculo/:id" element={<VehicleDetails vehicle={vehicles} />} />
+          <Route
+            path="/veiculo/:id"
+            element={
+              <ProtectedRoute isLogged={isLogged}>
+                <VehicleDetails vehicle={vehicles} />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/frota"
-            element={<FleetDashboard vehicles={vehicles} setVehicles={setVehicles} />}
+            element={
+              <ProtectedRoute isLogged={isLogged}>
+                <FleetDashboard vehicles={vehicles} setVehicles={setVehicles} />
+              </ProtectedRoute>
+            }
           />
           <Route path="*" element={<NotFound />} />
         </Route>

@@ -2,6 +2,7 @@ import { NavLink } from "react-router";
 import type { Dispatch, SetStateAction } from "react";
 import type { Vehicle } from "../../types/vehicle.types";
 import "./styles.css";
+import { toast } from "react-toastify";
 
 type FleetDashboardProps = {
   vehicles: Vehicle[];
@@ -13,6 +14,7 @@ export function FleetDashboard({ vehicles, setVehicles }: FleetDashboardProps) {
     const confirm = window.confirm(`Tem certeza que deseja remover o veículo com placa ${licensePlate}?`);
     if (!confirm) return;
 
+    toast.success(`Veículo com placa ${licensePlate} removido com sucesso!`);
     setVehicles((prev) => prev.filter((v) => v.licensePlate !== licensePlate));
   }
 

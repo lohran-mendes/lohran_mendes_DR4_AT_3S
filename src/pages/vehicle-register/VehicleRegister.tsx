@@ -1,6 +1,6 @@
 import type { Vehicle } from "../../types/vehicle.types";
 import type { Dispatch, SetStateAction, SubmitEvent } from "react";
-import { Bounce, ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 import "./styles.css";
 
@@ -75,17 +75,6 @@ export function VehicleRegister({
         </div>
         <button type="submit">Cadastrar Veículo</button>
       </form>
-      <ToastContainer
-        position="top-right"
-        style={{ marginTop: "50px" }}
-        autoClose={2500}
-        hideProgressBar={false}
-        closeOnClick={false}
-        pauseOnHover={true}
-        draggable={true}
-        theme="light"
-        transition={Bounce}
-      />
     </section>
   );
 }

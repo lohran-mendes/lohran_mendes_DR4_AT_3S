@@ -8,11 +8,35 @@
   list-style: none;
 }
 
-.navbar-component a {
+.navbar-component a,
+.navbar-component button {
   padding: 10px 20px;
   border-radius: 5px;
   display: inline-block;
   white-space: nowrap;
+}
+
+.navbar-component a:hover,
+.navbar-component button:hover {
+  background-color: #054480;
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.navbar-component a.active {
+  background-color: #054480;
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.navbar-component button {
+  background-color: #003f7a;
+  width: 75px;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -21,7 +45,8 @@
     width: 100%;
   }
 
-  .navbar-component a {
+  .navbar-component a,
+  .navbar-component button {
     padding: 8px 12px;
     font-size: 0.9rem;
   }
@@ -34,14 +59,13 @@
     gap: 6px;
   }
 
-  .navbar-component a {
+  .navbar-component a,
+  .navbar-component button {
     text-align: center;
+  }
+
+  .navbar-component button {
+    width: 100%;
   }
 }
 
-.navbar-component a.active {
-  background-color: #054480;
-  box-shadow:
-    rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
-    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-}
