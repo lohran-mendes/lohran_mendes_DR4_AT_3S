@@ -6,4 +6,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .header-component {
+        padding: 10px 20px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .header-component h1 {
+        font-size: 1.5rem;
+        width: 100%;
+    }
 }

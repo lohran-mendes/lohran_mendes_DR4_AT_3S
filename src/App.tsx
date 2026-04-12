@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import { Home, FleetDashboard, VehicleRegister, VehicleDetails, NotFound } from "./pages";
 import { RootLayout } from "./layouts/root/RootLayout";
 import type { Vehicle } from "./types/vehicle.types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const mockVehicles: Vehicle[] = [
   { brand: "Toyota", model: "Corolla", licensePlate: "ABC-1234" },
@@ -11,7 +11,15 @@ const mockVehicles: Vehicle[] = [
 ];
 
 export function App() {
-  const [vehicles, setVehicles] = useState<Vehicle[]>(mockVehicles);
+  const [vehicles, setVehicles] = useState<Vehicle[]>(() => {
+    const storedVehicles = localStorage.getItem("vehicles");
+
+    return storedVehicles ? JSON.parse(storedVehicles) : mockVehicles;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("vehicles", JSON.stringify(vehicles));
+  }, [vehicles]);
 
   return (
     <BrowserRouter>
