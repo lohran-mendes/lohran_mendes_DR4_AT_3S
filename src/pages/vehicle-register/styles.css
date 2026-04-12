@@ -1,0 +1,58 @@
+.vehicle-register-page {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.vehicle-register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 60px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.vehicle-register-form .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vehicle-register-form label {
+  font-weight: 600;
+  color: #003f7a;
+}
+
+.vehicle-register-form input {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.vehicle-register-form input:focus {
+  outline: none;
+  border-color: #003f7a;
+  box-shadow: 0 0 5px rgba(0, 63, 122, 0.5);
+}
+
+.vehicle-register-form button {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 4px;
+  border: none;
+  background-color: #003f7a;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.vehicle-register-form button:hover {
+  background-color: #002f5a;
+}

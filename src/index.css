@@ -9,10 +9,6 @@ html {
   box-sizing: border-box;
 }
 
-body {
-  background-color: rgba(53, 53, 53, 0.904);
-}
-
 a {
   text-decoration: none;
   color: inherit;

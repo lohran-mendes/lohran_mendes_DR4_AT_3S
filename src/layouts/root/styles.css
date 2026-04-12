@@ -1,3 +1,13 @@
 .layout-container {
-  margin: 20px 0px 60px 60px;
+  margin: 20px 60px 0px 60px;
+}
+
+.layout-container h1 {
+  color: #003f7a;
+  margin-bottom: 8px;
+}
+
+.layout-container p {
+  color: #444;
+  margin-bottom: 24px;
 }
