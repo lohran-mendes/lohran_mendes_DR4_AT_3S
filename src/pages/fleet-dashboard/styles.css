@@ -70,3 +70,22 @@
   letter-spacing: 2px;
   margin-top: 2px;
 }
+
+.fleet-dashboard-page .details-link {
+  text-align: center;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 4px;
+  border: none;
+  background-color: #003f7a;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.fleet-dashboard-page .details-link:hover {
+  background-color: #002f5a;
+}

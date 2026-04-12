@@ -4,8 +4,14 @@ import { RootLayout } from "./layouts/root/RootLayout";
 import type { Vehicle } from "./types/vehicle.types";
 import { useState } from "react";
 
+const mockVehicles: Vehicle[] = [
+  { brand: "Toyota", model: "Corolla", licensePlate: "ABC-1234" },
+  { brand: "Honda", model: "Civic", licensePlate: "XYZ-5678" },
+  { brand: "Ford", model: "Focus", licensePlate: "DEF-9012" },
+];
+
 export function App() {
-  const [vehicles, setVehicles] = useState<Vehicle[]>([]);
+  const [vehicles, setVehicles] = useState<Vehicle[]>(mockVehicles);
 
   return (
     <BrowserRouter>
@@ -14,9 +20,9 @@ export function App() {
           <Route path="/" element={<Home />} />
           <Route
             path="/cadastrar"
-            element={<VehicleRegister setVehicles={setVehicles} />}
+            element={<VehicleRegister vehicles={vehicles} setVehicles={setVehicles} />}
           />
-          <Route path="/veiculo/:id" element={<VehicleDetails />} />
+          <Route path="/veiculo/:id" element={<VehicleDetails vehicle={vehicles} />} />
           <Route
             path="/frota"
             element={<FleetDashboard vehicles={vehicles} />}

@@ -1,0 +1,68 @@
+.vehicle-details-page .vehicle-card {
+    margin-top: 20px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow:
+    rgba(0, 0, 0, 0.08) 0px 2px 6px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vehicle-details-page .vehicle-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    rgba(0, 0, 0, 0.12) 0px 6px 14px 0px,
+    rgba(0, 0, 0, 0.08) 0px 2px 4px 0px;
+}
+
+.vehicle-details-page .vehicle-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eef1f5;
+}
+
+.vehicle-details-page .vehicle-info:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.vehicle-details-page .vehicle-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #7a8899;
+}
+
+.vehicle-details-page .vehicle-value {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #003f7a;
+}
+
+.vehicle-details-page .vehicle-plate {
+  align-self: flex-start;
+  font-family: "Courier New", monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #054480;
+  background-color: #f1f4f8;
+  border: 1px solid #d6dde5;
+  border-radius: 4px;
+  padding: 4px 12px;
+  letter-spacing: 2px;
+  margin-top: 2px;
+}
+
+.vehicle-details-page h1 span.vehicle-plate {
+  font-size: 2rem;
+}

@@ -4,32 +4,42 @@ import { Bounce, ToastContainer, toast } from "react-toastify";
 import "./styles.css";
 
 type VehicleRegisterProps = {
+  vehicles: Vehicle[];
   setVehicles: Dispatch<SetStateAction<Vehicle[]>>;
 };
 
-export function VehicleRegister({ setVehicles }: VehicleRegisterProps) {
+export function VehicleRegister({
+  vehicles,
+  setVehicles,
+}: VehicleRegisterProps) {
   const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
+    const licensePlate = (formData.get("licensePlate") as string).trim();
+    const hasSpaces = /\s/.test(licensePlate);
+
+    if (hasSpaces) {
+      toast.error("A placa não pode conter espaços.");
+      return;
+    }
+
     const newVehicle: Vehicle = {
-      brand: formData.get("make") as string,
-      model: formData.get("model") as string,
-      licensePlate: formData.get("licensePlate") as string,
+      brand: (formData.get("make") as string).trim(),
+      model: (formData.get("model") as string).trim(),
+      licensePlate: licensePlate,
     };
 
+    if (
+      vehicles.some(
+        (vehicle) => vehicle.licensePlate === newVehicle.licensePlate,
+      )
+    ) {
+      toast.error("Já existe um veículo cadastrado com esta placa!");
+      return;
+    }
+
     setVehicles((prevVehicles) => [...prevVehicles, newVehicle]);
-    toast.success("Veículo cadastrado com sucesso!", {
-      position: "top-right",
-      style: { marginTop: "50px" },
-      autoClose: 2500,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      transition: Bounce,
-    });
+    toast.success("Veículo cadastrado com sucesso!");
     event.currentTarget.reset();
   };
 
@@ -48,11 +58,28 @@ export function VehicleRegister({ setVehicles }: VehicleRegisterProps) {
         </div>
         <div className="form-field">
           <label htmlFor="licensePlate">Placa:</label>
-          <input type="text" id="licensePlate" name="licensePlate" required />
+          <input
+            type="text"
+            id="licensePlate"
+            name="licensePlate"
+            required
+            pattern="^\S+$"
+            title="A placa não pode conter espaços."
+          />
         </div>
         <button type="submit">Cadastrar Veículo</button>
       </form>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        style={{ marginTop: "50px" }}
+        autoClose={2500}
+        hideProgressBar={false}
+        closeOnClick={false}
+        pauseOnHover={true}
+        draggable={true}
+        theme="light"
+        transition={Bounce}
+      />
     </section>
   );
 }

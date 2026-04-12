@@ -1,3 +1,4 @@
+import { NavLink } from "react-router";
 import type { Vehicle } from "../../types/vehicle.types";
 import "./styles.css";
 
@@ -24,6 +25,9 @@ export function FleetDashboard({ vehicles }: FleetDashboardProps) {
               <span className="vehicle-label">Placa</span>
               <span className="vehicle-plate">{vehicle.licensePlate}</span>
             </div>
+            <NavLink to={`/veiculo/${vehicle.licensePlate}`} className="details-link">
+              Ver detalhes
+            </NavLink>
           </li>
         ))}
       </ul>
