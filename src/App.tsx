@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import { Home, FleetDashboard, VehicleRegister } from "./pages";
+import { Home, FleetDashboard, VehicleRegister, VehicleDetails } from "./pages";
 import { RootLayout } from "./layouts/root/RootLayout";
-import { VehicleDetails } from "./pages/vehicle-details/VehicleDetails";
 import type { Vehicle } from "./types/vehicle.types";
 import { useState } from "react";
 
