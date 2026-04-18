@@ -56,3 +56,9 @@
 .vehicle-register-form button:hover {
   background-color: #002f5a;
 }
+
+.vehicle-register-form button.isSubmitting {
+  background-color: #dddddd;
+  border: 1px solid #d6dde5;
+  color: #003f7a;
+}

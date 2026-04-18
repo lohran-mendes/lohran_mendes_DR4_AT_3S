@@ -1,8 +1,14 @@
 import type { Vehicle } from "../../types/vehicle.types";
-import type { Dispatch, SetStateAction, SubmitEvent } from "react";
+import {
+  useState,
+  type Dispatch,
+  type SetStateAction,
+  type SubmitEvent,
+} from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 import "./styles.css";
+import { FleetStatus } from "../../enums/fleet-status.enum";
 
 type VehicleRegisterProps = {
   vehicles: Vehicle[];
@@ -14,10 +20,15 @@ export function VehicleRegister({
   setVehicles,
 }: VehicleRegisterProps) {
   const navigate = useNavigate();
+  const [buttonTitle, setButtonTitle] = useState<
+    "Processando..." | "Cadastrar Veículo"
+  >("Cadastrar Veículo");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const licensePlate = (formData.get("licensePlate") as string).trim();
     const hasSpaces = /\s/.test(licensePlate);
 
@@ -29,24 +40,36 @@ export function VehicleRegister({
     const newVehicle: Vehicle = {
       brand: (formData.get("make") as string).trim(),
       model: (formData.get("model") as string).trim(),
+      rented: false,
       licensePlate: licensePlate,
     };
 
-    if (
-      vehicles.some(
-        (vehicle) => vehicle.licensePlate === newVehicle.licensePlate,
-      )
-    ) {
-      toast.error("Já existe um veículo cadastrado com esta placa!");
-      return;
-    }
+    setButtonTitle("Processando...");
+    setIsSubmitting(true);
 
-    setVehicles((prevVehicles) => [...prevVehicles, newVehicle]);
-    toast.success("Veículo cadastrado com sucesso! Redirecionando...");
-    event.currentTarget.reset();
     setTimeout(() => {
-      navigate("/frota");
-    }, 3000);
+      setButtonTitle("Cadastrar Veículo");
+      setIsSubmitting(false);
+
+      if (
+        vehicles.some(
+          (vehicle) => vehicle.licensePlate === newVehicle.licensePlate,
+        )
+      ) {
+        toast.error("Já existe um veículo cadastrado com esta placa!");
+        setButtonTitle("Cadastrar Veículo");
+        setIsSubmitting(false);
+        return;
+      }
+
+      setVehicles((prevVehicles) => [...prevVehicles, newVehicle]);
+      toast.success("Veículo cadastrado com sucesso! Redirecionando...");
+      form.reset();
+
+      setTimeout(() => {
+        navigate(`/frota/${FleetStatus.Available}`);
+      }, 3000);
+    }, 2000);
   };
 
   return (
@@ -73,7 +96,9 @@ export function VehicleRegister({
             title="A placa não pode conter espaços."
           />
         </div>
-        <button type="submit">Cadastrar Veículo</button>
+        <button className={isSubmitting ? "isSubmitting" : ""} type="submit">
+          {buttonTitle}
+        </button>
       </form>
     </section>
   );
