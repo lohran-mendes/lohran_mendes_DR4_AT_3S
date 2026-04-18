@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router";
+import { useEffect, useState } from "react";
 import {
   Home,
   FleetDashboard,
@@ -6,18 +7,27 @@ import {
   VehicleDetails,
   NotFound,
 } from "./pages";
-import { RootLayout } from "./layouts/root/RootLayout";
+import { RootLayout } from "./layouts";
 import { ProtectedRoute } from "./auth";
 import type { Vehicle } from "./types/vehicle.types";
-import { useEffect, useState } from "react";
-import { FleetList } from "./components/fleet-list/FleetList";
+import { FleetList } from "./components";
 import { FleetStatus } from "./enums/fleet-status.enum";
 
 const mockVehicles: Vehicle[] = [
-  { brand: "Toyota", model: "Corolla", licensePlate: "ABC-1234", rented: false },
+  {
+    brand: "Toyota",
+    model: "Corolla",
+    licensePlate: "ABC-1234",
+    rented: false,
+  },
   { brand: "Honda", model: "Civic", licensePlate: "XYZ-5678", rented: false },
   { brand: "Ford", model: "Focus", licensePlate: "DEF-9012", rented: false },
-  { brand: "Volkswagen", model: "Taos", licensePlate: "GDS-2342", rented: true },
+  {
+    brand: "Volkswagen",
+    model: "Taos",
+    licensePlate: "GDS-2342",
+    rented: true,
+  },
   { brand: "Nissan", model: "Kicks", licensePlate: "HIJ-3456", rented: true },
 ];
 
@@ -71,13 +81,19 @@ export function App() {
             <Route
               path={`/frota/${FleetStatus.Available}`}
               element={
-                <FleetList vehicles={vehicles.filter(v => !v.rented)} setVehicles={setVehicles} />
+                <FleetList
+                  vehicles={vehicles.filter((v) => !v.rented)}
+                  setVehicles={setVehicles}
+                />
               }
             />
             <Route
               path={`/frota/${FleetStatus.Rented}`}
               element={
-                <FleetList vehicles={vehicles.filter(v => v.rented)} setVehicles={setVehicles} />
+                <FleetList
+                  vehicles={vehicles.filter((v) => v.rented)}
+                  setVehicles={setVehicles}
+                />
               }
             />
           </Route>
