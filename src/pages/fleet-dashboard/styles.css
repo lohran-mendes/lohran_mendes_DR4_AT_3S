@@ -1,104 +1,31 @@
-.fleet-dashboard-page ul {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
+.fleet-dashboard-page .button-container {
+  display: flex;
+  gap: 10px;
   margin-top: 20px;
-  padding-right: 40px;
-}
 
-.fleet-dashboard-page li {
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow:
-    rgba(0, 0, 0, 0.08) 0px 2px 6px 0px,
-    rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+  a {
+    text-align: center;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 4px;
+    border: none;
+    background-color: #003f7a;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
 
-.fleet-dashboard-page li:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    rgba(0, 0, 0, 0.12) 0px 6px 14px 0px,
-    rgba(0, 0, 0, 0.08) 0px 2px 4px 0px;
-}
-
-.fleet-dashboard-page .vehicle-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eef1f5;
-}
-
-.fleet-dashboard-page .vehicle-info:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.fleet-dashboard-page .vehicle-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  color: #7a8899;
-}
-
-.fleet-dashboard-page .vehicle-value {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #003f7a;
-}
-
-.fleet-dashboard-page .vehicle-plate {
-  align-self: flex-start;
-  font-family: "Courier New", monospace;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #054480;
-  background-color: #f1f4f8;
-  border: 1px solid #d6dde5;
-  border-radius: 4px;
-  padding: 4px 12px;
-  letter-spacing: 2px;
-  margin-top: 2px;
-}
-
-.fleet-dashboard-page .details-link, 
-.fleet-dashboard-page button {
-  text-align: center;
-  margin-top: 10px;
-  padding: 12px;
-  border-radius: 4px;
-  border: none;
-  background-color: #003f7a;
-  color: white;
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: Arial, Helvetica, sans-serif;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.fleet-dashboard-page .details-link:hover {
-  background-color: #002f5a;
-}
-
-.fleet-dashboard-page .remove-button {
-  margin-top: 0px;
-  border: 1px solid #c0392b;
-  background-color: transparent;
-  color: #c0392b;
-}
-
-.fleet-dashboard-page .remove-button:hover {
-  background-color: #c0392b;
-  color: white;
+  a:not(.active) {
+    background-color: #f1f4f9;
+    border: 1px solid #d6dde5;
+    color: #003f7a;
+  }
+  a:not(.active):hover {
+    background-color: #dddddd;
+    border: 1px solid #d6dde5;
+    color: #003f7a;
+  }
 }
